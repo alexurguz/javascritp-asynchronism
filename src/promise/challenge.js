@@ -1,16 +1,17 @@
 const fetchData = require('../utils/fetchData');
-let API = 'https://rickandmortyapi.com/api/character/';
+let API = 'https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations';
 
+console.log(':::::::::::::::::Example using promise:::::::::::::::::');
 fetchData(API)
     .then(data =>{
-        console.log(data.info.count)
-        return fetchData(`${API}${data.results[0].id}`)
+        console.log(`Civilization: ${data.civilizations[0].name}`)
+        return fetchData(data.civilizations[0].unique_unit[0])
     })
-    .then(data =>{
-        console.log(data.name)
-        return fetchData(data.origin.url)
+    .then(unique_unit =>{
+        console.log(`First unique unit: ${unique_unit.name}`)
+        return fetchData(unique_unit.created_in)
     })
-    .then(data =>{
-        console.log(data.dimension)
+    .then(created_in =>{
+        console.log(`Created in: ${created_in.name}`)
     })
     .catch(err => console.error(err))

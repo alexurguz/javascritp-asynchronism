@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/alexurguz/javascritp-asynchronism#readme",
   "dependencies": {
+    "node-fetch": "^2.6.1",
     "xmlhttprequest": "^1.8.0"
   }
 }
